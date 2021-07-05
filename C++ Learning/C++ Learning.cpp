@@ -76,10 +76,14 @@ void simpleFunction(string name);
 double cube(double num);
 void ifStatement(bool gay, bool happy, bool crazy);
 void switchCase(int numberToDayOfWeek);
+void whileLoop();
+void doWhileLoop();
+void guessANumber();
+void forLoop();
 
 int main()
 {
-	switchCase(1);
+	forLoop();
 
 	return 0;
 }
@@ -149,3 +153,55 @@ void switchCase(int numberToDayOfWeek)
 	cout << dayOfWeek << endl;
 }
 
+void whileLoop()
+{
+	int index = 0;
+
+	while (index <= 10) {
+		cout << "Index: " << index << endl;
+		index++;
+	}
+}
+
+void doWhileLoop()
+{
+	int index = 0;
+
+	do {
+		cout << "Index: " << index << endl;
+		index++;
+	} while (index <= 0);
+}
+
+void guessANumber()
+{
+	int guessedNumber = 0;
+	int guessedCount = 0;
+	int answer = 10;
+	int guessChances = 2;
+	bool outOfGuess = false;
+
+	while (answer != guessedNumber && !outOfGuess) {
+		if (guessedCount < guessChances) {
+			cout << "Please guess a right number between 1 to 10: \n";
+			cin >> guessedNumber;
+			guessedCount++;
+		}
+		else if (guessedCount >= guessChances)
+		{
+			outOfGuess = true;
+		}
+	}
+
+	if (guessedNumber == answer && !outOfGuess) {
+		cout << "You Win!" << endl;
+	}
+	else {
+		cout << "You Lost!" << endl;
+	}
+}
+
+void forLoop()
+{
+
+}
