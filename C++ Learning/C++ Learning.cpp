@@ -1,12 +1,13 @@
 // C++ Learning.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-// Tutorial learn from: (Youtube) https://www.youtube.com/watch?v=vLnPwxZdW4Y
+// Tutorial learn from: (Youtube) https://www.youtube.com/watch?v=vLnPwxZdW4Y and https://www.youtube.com/watch?v=mUQZ1qmKlLY
 // Author: Alex Ang
 // Year: 2021
 
 #include <iostream>
 #include <string>   // need to include this to use string without interruption
 #include <cmath>
+#include "Car.h"
 
 using namespace std;
 
@@ -69,20 +70,6 @@ void SimpleArray()
 
 	cout << stringList[0];
 }
-
-// C++ functions must be above main unless function prototyping is used where function name with type and parameter/s is declared above main function
-
-void simpleFunction(string name);
-double cube(double num);
-void ifStatement(bool gay, bool happy, bool crazy);
-void switchCase(int numberToDayOfWeek);
-void whileLoop();
-void doWhileLoop();
-void guessANumber();
-void forLoop();
-void power(int baseNum, int powNum);
-void twoDArray();
-void pointers();
 
 // class
 class Book {
@@ -170,9 +157,48 @@ void testBookClass2()
 
 }
 
+int x = 123567;
+
+void testScope()
+{
+	int x = 123;
+
+	cout << x << endl;
+	// scope resolution operator stated that this x belong to global variable
+	cout << :: x << endl;
+}
+
+// recursive
+int factorialRecursive(int x)
+{
+	// need a base case
+	if (x == 1) {
+		return 1;
+	}
+	else {
+		return x * factorialRecursive(x - 1);
+	}
+}
+
+// C++ functions must be above main unless function prototyping is used where function name with type and parameter/s is declared above main function
+
+void simpleFunction(string name);
+double cube(double num);
+void ifStatement(bool gay, bool happy, bool crazy);
+void switchCase(int numberToDayOfWeek);
+void whileLoop();
+void doWhileLoop();
+void guessANumber();
+void forLoop();
+void power(int baseNum, int powNum);
+void twoDArray();
+void pointers();
+void passByReference(int *x, int *y);
+void testPassByReference();
+
 int main()
 {
-	testBookClass2();
+	Car Vios;
 
 	return 0;
 }
@@ -351,4 +377,25 @@ void pointers()
 	cout << &age << endl;
 	// dereferencing a pointer is grabbing value in that physical address
 	cout << *pAge << endl;
+}
+
+// receive memory address and dereferencing it
+void passByReference(int *x, int *y)
+{
+	// switch variable
+	int temp = *x;
+
+	// directly tap into value in memory address instead of copy
+	*x = *y;
+	*y = temp;
+}
+
+void testPassByReference()
+{
+	int a = 100;
+	int b = 200;
+
+	passByReference(&a, &b);
+
+	cout << a << " and " << b << endl;
 }
